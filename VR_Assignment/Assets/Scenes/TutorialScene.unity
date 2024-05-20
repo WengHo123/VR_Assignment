@@ -666,7 +666,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e755bb5252c9df48815b23ec0889366, type: 3}
---- !u!114 &100047433 stripped
+--- !u!4 &100047435 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b,
+    type: 3}
+  m_PrefabInstance: {fileID: 29760635}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &100047437 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2975536556716397390, guid: 65847589f926b734d9eaed6e25f0046b,
     type: 3}
@@ -678,12 +684,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0c716efd8e1a644ba651504d6b8f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &100047435 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b,
-    type: 3}
-  m_PrefabInstance: {fileID: 29760635}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &108446907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 109434732395451517, guid: 65847589f926b734d9eaed6e25f0046b,
@@ -764,7 +764,13 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 953684212}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &134078013 stripped
+--- !u!4 &134078014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,
+    type: 3}
+  m_PrefabInstance: {fileID: 605627142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &134078016 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3929541209534923376, guid: 1fd3a7c43c8190f4d8c167ebde694364,
     type: 3}
@@ -776,12 +782,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec0c716efd8e1a644ba651504d6b8f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &134078014 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,
-    type: 3}
-  m_PrefabInstance: {fileID: 605627142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &144903328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422472, guid: f970dba99a4af4541ba9f13b59149a45,
@@ -5506,8 +5506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36d08b78d62d324ea12dd872dd3791a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rightHandPose: {fileID: 134078013}
-  leftHandPose: {fileID: 100047433}
+  rightHandPose: {fileID: 134078016}
+  leftHandPose: {fileID: 100047437}
 --- !u!114 &1188658111
 MonoBehaviour:
   m_ObjectHideFlags: 0
