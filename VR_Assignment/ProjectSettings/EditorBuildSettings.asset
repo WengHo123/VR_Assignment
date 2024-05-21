@@ -6,9 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/TutorialScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    Unity.XR.PICO.LivePreview.Settings: {fileID: 11400000, guid: 03c537d731902e5478f5effe1f84f8cd,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 950f8c2cf5af88f4f974072f4aabb0c6,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 9d3a1183968a12f47b6b01ce7c34f35c,
