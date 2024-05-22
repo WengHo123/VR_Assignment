@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - NavMeshSurface
+  - Torso
+  - Head
+  - Limb
+  - Enemy
   layers:
   - Default
   - TransparentFX
