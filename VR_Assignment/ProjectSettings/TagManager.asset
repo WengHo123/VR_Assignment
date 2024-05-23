@@ -7,6 +7,11 @@ TagManager:
   - NavMeshSurface
   - EnemyWeapon
   - Shield
+  - Torso
+  - Head
+  - Limb
+  - Enemy
+  - PlayerSword
   layers:
   - Default
   - TransparentFX
