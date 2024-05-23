@@ -9,7 +9,7 @@ public class Sword : MonoBehaviour
     public float hitCooldown = 0.5f;
     private MeshCollider meshCollider;
     private XRGrabInteractable grabInteractable;
-    private bool isHeld;
+    public bool isHeld = false;
 
     private float lastHitTime;
     public bool IsHeld { get { return isHeld; } }

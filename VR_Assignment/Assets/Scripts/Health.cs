@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -11,19 +13,39 @@ public class Health : MonoBehaviour
     public float currentHealth;
     Ragdoll ragdoll;
     public float destructionDelay = 5.0f;
-    private bool isDead = false;
+    public bool isDead = false;
     private bool isAlive = true;
+    public Image healthBar;
+
+    public bool IsDead { get { return isDead; } }
+
+    private SlashSound slashSound;
 
     // Start is called before the first frame update
     void Start()
     {
         ragdoll = GetComponent<Ragdoll>();
+        slashSound = GetComponent<SlashSound>();
         currentHealth = maxHealth;
+        if (healthBar == null)
+        {
+            Debug.LogError("Health bar Image component is not assigned.");
+        }
+        else
+        {
+            healthBar.fillAmount = currentHealth / maxHealth;
+        }
+
     }
 
     public void TakeDamage(float damage, string bodyPart)
     {
         float actualDamage = damage;
+
+        if (slashSound != null)
+        {
+            slashSound.PlayRandomSlashSound();
+        }
 
         // Adjust damage based on the body part
         switch (bodyPart)
@@ -72,8 +94,14 @@ public class Health : MonoBehaviour
 
     public void PlayerTakeDamage(float damage)
     {
+        if(slashSound != null)
+        {
+            slashSound.PlayRandomSlashSound();
+        }
+        
         Debug.Log("Player take damage");
         currentHealth -= damage;
+        healthBar.fillAmount = currentHealth / maxHealth;
         Debug.Log("Player Health: " + currentHealth);
         if (currentHealth <= 0.0f)
         {

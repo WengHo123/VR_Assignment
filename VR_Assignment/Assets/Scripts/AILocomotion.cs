@@ -16,8 +16,12 @@ public class AILocomotion : MonoBehaviour
     private float blockedCooldownTime = 0.0f; // Time remaining for blocked cooldown
     private bool isCoroutineRunning = false;
 
+    public bool IsAttacking { get { return isAttacking; } }
+    
     NavMeshAgent agent;
     Animator animator;
+    public Health health;
+    public UIController controller;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +33,7 @@ public class AILocomotion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isAttacking && !isCoroutineRunning)
+        if (!isAttacking && !isCoroutineRunning && controller.IsSwordInteracted)
         {
             CheckDistanceAndAttack();
         }
@@ -55,15 +59,17 @@ public class AILocomotion : MonoBehaviour
     private void CheckDistanceAndAttack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-
-        if (distanceToPlayer > attackRange)
+        if (!health.IsDead)
         {
-            StartRunning();
-        }
-        else if (attackCooldownTime <= 0 && blockedCooldownTime <= 0)
-        {
-            // Player is in attack range and cooldowns are finished, perform an attack
-            StartCoroutine(PerformAttack());
+            if (distanceToPlayer > attackRange)
+            {
+                StartRunning();
+            }
+            else if (attackCooldownTime <= 0 && blockedCooldownTime <= 0)
+            {
+                // Player is in attack range and cooldowns are finished, perform an attack
+                StartCoroutine(PerformAttack());
+            }
         }
     }
 
@@ -100,7 +106,7 @@ public class AILocomotion : MonoBehaviour
         }
 
         // Wait for the attack animation to complete
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(2.0f);
 
         // Start attack cooldown
         attackCooldownTime = attackCooldown;
