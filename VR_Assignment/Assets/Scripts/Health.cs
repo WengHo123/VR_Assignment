@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     private bool isDead = false;
     private bool isAlive = true;
 
+    public bool IsDead { get { return isDead; } }
+
     // Start is called before the first frame update
     void Start()
     {

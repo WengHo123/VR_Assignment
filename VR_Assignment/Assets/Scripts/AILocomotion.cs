@@ -15,9 +15,10 @@ public class AILocomotion : MonoBehaviour
     private float attackCooldownTime = 0.0f;
     private float blockedCooldownTime = 0.0f; // Time remaining for blocked cooldown
     private bool isCoroutineRunning = false;
-
+    
     NavMeshAgent agent;
     Animator animator;
+    public Health health;
 
     // Start is called before the first frame update
     void Start()
@@ -55,15 +56,17 @@ public class AILocomotion : MonoBehaviour
     private void CheckDistanceAndAttack()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, playerTransform.position);
-
-        if (distanceToPlayer > attackRange)
+        if (health.IsDead == false)
         {
-            StartRunning();
-        }
-        else if (attackCooldownTime <= 0 && blockedCooldownTime <= 0)
-        {
-            // Player is in attack range and cooldowns are finished, perform an attack
-            StartCoroutine(PerformAttack());
+            if (distanceToPlayer > attackRange)
+            {
+                StartRunning();
+            }
+            else if (attackCooldownTime <= 0 && blockedCooldownTime <= 0)
+            {
+                // Player is in attack range and cooldowns are finished, perform an attack
+                StartCoroutine(PerformAttack());
+            }
         }
     }
 
