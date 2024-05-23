@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - NavMeshSurface
+  - EnemyWeapon
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -12,7 +14,7 @@ TagManager:
   - NavMeshSurface
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
