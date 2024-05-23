@@ -2641,6 +2641,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
+  hitCooldown: 1
+  enemyAnimator: {fileID: 506779916}
+  blockEffect: {fileID: 0}
+  blockSound: {fileID: 8300000, guid: 5f6dd0610b9b21640be950d9c3a95a89, type: 3}
+  aiLocomotion: {fileID: 506779914}
+  playerSword: {fileID: 1188658119}
 --- !u!1001 &493758622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2719,6 +2725,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 425152, guid: 5e755bb5252c9df48815b23ec0889366,
     type: 3}
   m_PrefabInstance: {fileID: 493758622}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &506779914 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5270894506890865975, guid: 6293c8a69eee0694ca6701b3d52ebf9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252332534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 897c5a3daf1f8ac4883e449d31e9c676, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!95 &506779916 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7472104579527049261, guid: 6293c8a69eee0694ca6701b3d52ebf9e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1252332534}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &516994361
 PrefabInstance:
@@ -5599,7 +5623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &874704478
 Transform:
   m_ObjectHideFlags: 0
@@ -6813,7 +6837,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!64 &1188658113
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6855,7 +6879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 10
-  meshCollider: {fileID: 1188658113}
+  hitCooldown: 0.5
 --- !u!4 &1215139820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5291959691871055534, guid: 4f6122b02aea27540b60ee221b7415e5,
@@ -7290,6 +7314,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Torso
+      objectReference: {fileID: 0}
+    - target: {fileID: 9125075190943083900, guid: 6293c8a69eee0694ca6701b3d52ebf9e,
+        type: 3}
+      propertyPath: destructionDelay
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5235848114644045937, guid: 6293c8a69eee0694ca6701b3d52ebf9e, type: 3}
@@ -7816,9 +7845,9 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.3
   m_Height: 2.5
@@ -7838,6 +7867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  destructionDelay: 3
 --- !u!1001 &1286731289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9604,6 +9634,10 @@ PrefabInstance:
     - target: {fileID: 1139412499787094, guid: 3cf5a2410df36c04faa942382a900156, type: 3}
       propertyPath: m_Name
       value: Sword(1)_DH
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139412499787094, guid: 3cf5a2410df36c04faa942382a900156, type: 3}
+      propertyPath: m_TagString
+      value: PlayerSword
       objectReference: {fileID: 0}
     - target: {fileID: 4516332740532436, guid: 3cf5a2410df36c04faa942382a900156, type: 3}
       propertyPath: m_LocalPosition.x

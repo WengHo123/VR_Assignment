@@ -9,6 +9,7 @@ TagManager:
   - Head
   - Limb
   - Enemy
+  - PlayerSword
   layers:
   - Default
   - TransparentFX

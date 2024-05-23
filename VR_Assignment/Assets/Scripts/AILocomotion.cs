@@ -7,11 +7,13 @@ public class AILocomotion : MonoBehaviour
 {
     public Transform playerTransform;
     public float attackCooldown = 3.0f;
+    public float blockedCooldown = 1.0f; // Cooldown after a blocked attack
     public float rotationSpeed = 5.0f;
     public float attackRange = 2.0f;
 
     private bool isAttacking = false;
     private float attackCooldownTime = 0.0f;
+    private float blockedCooldownTime = 0.0f; // Time remaining for blocked cooldown
     private bool isCoroutineRunning = false;
 
     NavMeshAgent agent;
@@ -43,6 +45,11 @@ public class AILocomotion : MonoBehaviour
         {
             attackCooldownTime -= Time.deltaTime;
         }
+
+        if (blockedCooldownTime > 0)
+        {
+            blockedCooldownTime -= Time.deltaTime;
+        }
     }
 
     private void CheckDistanceAndAttack()
@@ -53,9 +60,9 @@ public class AILocomotion : MonoBehaviour
         {
             StartRunning();
         }
-        else if (attackCooldownTime <= 0)
+        else if (attackCooldownTime <= 0 && blockedCooldownTime <= 0)
         {
-            // Player is in attack range and cooldown is finished, perform an attack
+            // Player is in attack range and cooldowns are finished, perform an attack
             StartCoroutine(PerformAttack());
         }
     }
@@ -100,5 +107,11 @@ public class AILocomotion : MonoBehaviour
 
         isAttacking = false;
         isCoroutineRunning = false;
+    }
+
+    // Function to apply blocked cooldown
+    public void ApplyBlockedCooldown()
+    {
+        blockedCooldownTime = blockedCooldown;
     }
 }

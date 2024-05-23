@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Health : MonoBehaviour
     [HideInInspector]
     public float currentHealth;
     Ragdoll ragdoll;
+    public float destructionDelay = 5.0f;
+    private bool isDead = false;
+    private bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -40,23 +44,37 @@ public class Health : MonoBehaviour
 
         Debug.Log("Damage: " + actualDamage);
         currentHealth -= actualDamage;
-        Debug.Log("Current Health: " + currentHealth);
+        Debug.Log("Enemy Health: " + currentHealth);
         if(currentHealth <= 0.0f)
         {
-            Die();
+            EnemyDie();
         }
     }
 
-    private void Die()
+    private void EnemyDie()
     {
-        ragdoll.ActivateRagdoll();
+        do
+        {
+            Debug.Log("Enemy Died");
+            isDead = true;
+            ragdoll.ActivateRagdoll();
+
+            //disable navMeshAgent
+            NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+            if (navMeshAgent != null)
+            {
+                navMeshAgent.enabled = false;
+            }
+            Destroy(gameObject, destructionDelay);
+            
+        } while(!isActiveAndEnabled && !isDead);
     }
 
     public void PlayerTakeDamage(float damage)
     {
         Debug.Log("Player take damage");
         currentHealth -= damage;
-        Debug.Log("Current Health: " + currentHealth);
+        Debug.Log("Player Health: " + currentHealth);
         if (currentHealth <= 0.0f)
         {
             GameOver();
@@ -65,6 +83,17 @@ public class Health : MonoBehaviour
 
     private void GameOver()
     {
-        Debug.Log("Game Over!");
+        do
+        {
+            isAlive = false;
+
+            CharacterController characterController = GetComponent<CharacterController>();
+            if(characterController != null)
+            {
+                characterController.enabled = false;
+            }
+            Debug.Log("Game Over!");
+        } while (isAlive);
+        
     }
 }
